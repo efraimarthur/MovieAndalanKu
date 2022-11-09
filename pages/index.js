@@ -85,12 +85,15 @@ const Home = () => {
         {scroll ? (
           console.log("masih di atas")
         ) : (
-          <a href="#" className="fixed-bottom text-decoration-none me-2">
-            <span className="btn-up float-end mb-5 p-1 bg-dark rounded-circle">
+          <span className="fixed-bottom text-decoration-none me-2">
+            <a
+              href="#"
+              className="btn-up float-end mb-5 p-1 bg-dark rounded-circle"
+            >
               <Icon icon="noto:rocket" width="50" height="50" />
-            </span>
+            </a>
             {/* <span className="">Scroll to top</span> */}
-          </a>
+          </span>
         )}
 
         <main className={styles.main}>
@@ -202,16 +205,7 @@ const Home = () => {
         </main>
       </div>
       <footer className={styles.footer}>
-        <Link
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Created with OMDB API{" "}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </Link>
+        <span className={styles.logo}>Created with OMDB API </span>
       </footer>
     </div>
   );
