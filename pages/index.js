@@ -8,10 +8,10 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 const Home = () => {
-  //ini gaul
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [detailCard, setDetailCard] = useState({});
 
   //to get input value onchange
   const [searchval, setSearchval] = useState();
@@ -49,14 +49,19 @@ const Home = () => {
   //set the final respons to hasil (ready to loop)
   const hasil = data.Search;
 
-  const detailCard = (item) => {
+  const detailOnclick = (item) => {
+    console.log(item);
     const cardz = {
       id: item.imdbID,
       title: item.Title,
-      tahun: item.Year,
+      year: item.Year,
+      image: item.Poster,
+      type: item.Type,
     };
-    console.log(cardz);
     setShow(true);
+    setDetailCard(cardz);
+
+    // console.log(detailCard, "ini detail");
   };
   return (
     <div className={styles.container}>
@@ -107,45 +112,71 @@ const Home = () => {
                     style={{ width: "16rem" }}
                     key={item.imdbID}
                   >
-                    <img
-                      src={item.Poster}
-                      className="card-img-top"
-                      style={{ cursor: "pointer" }}
-                      alt="..."
-                    />
+                    <a className="" onClick={() => detailOnclick(item)}>
+                      <img
+                        src={item.Poster}
+                        className="card-img-top"
+                        style={{ cursor: "pointer" }}
+                        alt="..."
+                      />
+                    </a>
                     <div className="card-body">
-                      <h5 className="card-title">
-                        {item.Title} ({item.Year})
-                      </h5>
-                      <p className="card-text">
+                      <h5 className="card-title">{item.Title}</h5>
+                      {/* <p className="card-text">
                         Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Ex possimus ab doloribus magnam ipsa perferendis!
-                      </p>
+                      </p> */}
 
                       <a
                         // href="#"
                         className="btn btn-danger"
-                        onClick={() => detailCard(item)}
+                        onClick={() => detailOnclick(item)}
                         // onClick={item.imdbID}
                       >
                         See Details
                       </a>
 
-                      <Modal show={show} onHide={handleClose}>
+                      <Modal show={show} size="lg" onHide={handleClose}>
                         <Modal.Header closeButton>
-                          <Modal.Title>Modal heading</Modal.Title>
+                          <Modal.Title>
+                            Title :{" "}
+                            <span className="fw-bold text-danger">
+                              {detailCard.title}
+                            </span>
+                          </Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
-                          Woohoo, you re reading this text in a modal!
-                          {/* {console.log(detailCard(cardz))} */}
+                          <div className="d-flex">
+                            <img
+                              src={detailCard.image}
+                              width="200px"
+                              height="300px"
+                              alt="gmbar"
+                              className=""
+                            />
+                            <div className="ms-4 border border-end-0 border-top-0 border-bottom-0 border-4 border-danger ps-4">
+                              <p className="">
+                                <b className="fw-bold">Title : </b>
+                                {detailCard.title}
+                              </p>
+                              <p className="">
+                                <b className="fw-bold">Published Year : </b>
+                                {detailCard.year}
+                              </p>
+                              <p className="">
+                                <b className="fw-bold">Type : </b>
+                                {detailCard.type}
+                              </p>
+                            </div>
+                          </div>
                         </Modal.Body>
                         <Modal.Footer>
-                          <Button variant="secondary" onClick={handleClose}>
+                          <Button variant="danger" onClick={handleClose}>
                             Close
                           </Button>
-                          <Button variant="primary" onClick={handleClose}>
+                          {/* <Button variant="primary" onClick={handleClose}>
                             Save Changes
-                          </Button>
+                          </Button> */}
                         </Modal.Footer>
                       </Modal>
                     </div>
