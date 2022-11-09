@@ -2,15 +2,22 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 import useSWR from "swr";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
 
 const Home = () => {
+  //ini gaul
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   //to get input value onchange
   const [searchval, setSearchval] = useState();
 
   //to store input value before button search pressed
-  const [valSearch, setValSearch] = useState("Arthur");
+  const [valSearch, setValSearch] = useState("");
 
   //When search button is clicked, set the valsearch value = input search value(searchval)
   const onSearch = () => {
@@ -42,6 +49,15 @@ const Home = () => {
   //set the final respons to hasil (ready to loop)
   const hasil = data.Search;
 
+  const detailCard = (item) => {
+    const cardz = {
+      id: item.imdbID,
+      title: item.Title,
+      tahun: item.Year,
+    };
+    console.log(cardz);
+    setShow(true);
+  };
   return (
     <div className={styles.container}>
       <Head>
@@ -57,7 +73,7 @@ const Home = () => {
               <input
                 className="form-control me-2"
                 type="search"
-                placeholder="Search"
+                placeholder="Search the Title"
                 aria-label="Search"
                 onChange={(e) => setSearchval(e.target.value)}
               />
@@ -76,11 +92,12 @@ const Home = () => {
             You searched <b className="text-danger">{`"${valSearch}"`}</b>
           </h4>
         </div>
+
         <div className="row mt-3">
           <div className="d-flex flex-wrap gap-3">
             {!hasil ? (
               <div className="">
-                <h4 className="mt-5"> {valSearch} Not Found</h4>
+                <h4 className="mt-5"> {valSearch}</h4>
               </div>
             ) : (
               hasil.map((item) => (
@@ -105,9 +122,32 @@ const Home = () => {
                         elit. Ex possimus ab doloribus magnam ipsa perferendis!
                       </p>
 
-                      <a href="#" className="btn btn-danger">
+                      <a
+                        // href="#"
+                        className="btn btn-danger"
+                        onClick={() => detailCard(item)}
+                        // onClick={item.imdbID}
+                      >
                         See Details
                       </a>
+
+                      <Modal show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Modal heading</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                          Woohoo, you re reading this text in a modal!
+                          {/* {console.log(detailCard(cardz))} */}
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Close
+                          </Button>
+                          <Button variant="primary" onClick={handleClose}>
+                            Save Changes
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
                     </div>
                   </div>
                 </>
