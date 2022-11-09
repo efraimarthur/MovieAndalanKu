@@ -35,5 +35,10 @@ a {
   rotate: -45deg;
   
 }
+.bg-bro:hover .bg-bro2{
+  background-color: #555;
+  /* border: 5px solid red; */
+  /* margin: 30px; */
+}
 
 

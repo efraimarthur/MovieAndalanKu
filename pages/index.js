@@ -141,7 +141,7 @@ const Home = () => {
                 hasil.map((item) => (
                   <>
                     <div
-                      className="card shadow bg-dark"
+                      className="card shadow bg-bro bg-dark"
                       style={{ width: "16rem" }}
                       key={item.imdbID}
                     >
@@ -149,18 +149,23 @@ const Home = () => {
                         <img
                           src={item.Poster}
                           className="card-img-top"
-                          style={{ cursor: "pointer" }}
-                          alt="..."
+                          style={{
+                            cursor: "pointer",
+                            height: "25rem",
+                          }}
+                          alt="Image.png"
                         />
                       </a>
-                      <div className="card-body bg-dark">
-                        <h5 className="card-title text-white">{item.Title}</h5>
+                      <div className="card-body bg-bro2 bg-opacity-75 text-center">
+                        <h5 className="card-title text-white text-center">
+                          {item.Title}
+                        </h5>
                         <a
                           // href="#"
-                          className="btn btn-danger"
+                          className="btn btn-danger mt-3"
                           onClick={() => detailOnClick(item)}
                         >
-                          See Details
+                          Show Details
                         </a>
 
                         <Modal
