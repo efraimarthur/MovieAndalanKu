@@ -227,7 +227,9 @@ const Home = () => {
         </main>
       </div>
       <footer className={`${styles.footer} border-top border-danger`}>
-        <span className="fw-bold text-white ">Created by Arthur Efraim</span>
+        <span className="fw-bold text-white ">
+          Made by <b className="fw-bold text-danger">Arthur Efraim</b>
+        </span>
       </footer>
     </div>
   );
