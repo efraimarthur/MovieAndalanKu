@@ -16,7 +16,7 @@ a {
   box-sizing: border-box;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -24,10 +24,16 @@ a {
     color: white;
     background: black;
   }
-} */
+}
 
 .gambar:hover {
-  border: 1px solid #333;
+  padding-top: 5px;
+  margin-bottom: -5px;
+  transition: 0.3s;
+  /* background-color: #555; */
+}
+.gambar{
+  transition: 0.3s;
 }
 
 .btn-up{
@@ -35,10 +41,11 @@ a {
   rotate: -45deg;
   
 }
+
+
+/* Background card*/
 .bg-bro:hover .bg-bro2{
   background-color: #555;
-  /* border: 5px solid red; */
-  /* margin: 30px; */
 }
 
 
