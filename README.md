@@ -1,4 +1,4 @@
-This simple website is Created with Nextjs + Bootstrap
+This simple website is Created with <b>Nextjs + Bootstrap <b>
 
 <b>Web Preview : </b> 
 
