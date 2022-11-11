@@ -147,7 +147,9 @@ const Home = () => {
             <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
               {!hasil ? (
                 <div className="text-white fs-4 fw-semibold">
-                  {!valSearch ? null : (
+                  {!valSearch ||
+                  valSearch == " " ||
+                  valSearch == "  " ? null : (
                     <div>
                       <span className="text-danger">{valSearch}</span>
                       <span> NotFound</span>
@@ -155,14 +157,6 @@ const Home = () => {
                   )}
                 </div>
               ) : (
-                ((
-                  <div className="row bg-white">
-                    <h4 className="mt-4 text-white">
-                      You searched{" "}
-                      <b className="text-danger">{`"${valSearch}"`}</b>
-                    </h4>
-                  </div>
-                ),
                 hasil.map((item) => (
                   <div
                     className="card shadow bg-bro bg-dark"
@@ -242,7 +236,7 @@ const Home = () => {
                       </Modal>
                     </div>
                   </div>
-                )))
+                ))
               )}
             </div>
           </div>
