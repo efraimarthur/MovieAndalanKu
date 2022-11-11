@@ -82,7 +82,7 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>MovieAndalanKU</title>
+        <title>TututMovieDB</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/movieIcon32.png" />
       </Head>
@@ -105,9 +105,9 @@ const Home = () => {
                 href="/"
                 className="fw-bold fs-3 text-decoration-none text-danger"
               >
-                Movie
-                <span className="fw-normal text-white">Andalan</span>
-                KU
+                Tutut
+                <span className="fw-normal text-white">Movie</span>
+                DB
               </Link>
             </div>
             <div className="col-md-12 py-3 text-center text-danger mb-2">
@@ -136,15 +136,17 @@ const Home = () => {
               </form>
             </div>
           </div>
-          {/* <div className="row">
-            <h4 className="mt-4 text-white">
-              You searched <b className="text-danger">{`"${valSearch}"`}</b>
-            </h4>
-          </div> */}
+          {hasil ? (
+            <div className="row">
+              <h4 className="mt-4 text-white">
+                You searched <b className="text-danger">{`"${valSearch}"`}</b>
+              </h4>
+            </div>
+          ) : null}
           <div className="row mt-3">
             <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
               {!hasil ? (
-                <div className="text-white mt-5 fs-4 fw-semibold">
+                <div className="text-white fs-4 fw-semibold">
                   {!valSearch ? null : (
                     <div>
                       <span className="text-danger">{valSearch}</span>
