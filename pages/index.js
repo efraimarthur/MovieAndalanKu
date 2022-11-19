@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { Icon } from "@iconify/react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Home = () => {
   const [show, setShow] = useState(false);
@@ -69,7 +70,7 @@ const Home = () => {
   const detailOnClick = (item) => {
     // console.log(item);
     const cardz = {
-      id: item.imdbID,
+      id: item.imbdID,
       title: item.Title,
       year: item.Year,
       image: item.Poster,
@@ -144,7 +145,7 @@ const Home = () => {
             </div>
           ) : null}
           <div className="row mt-3">
-            <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-3">
+            <div className="d-flex flex-wrap justify-content-center justify-content-md-start gap-3 px-md-5">
               {!hasil ? (
                 <div className="text-white fs-4 fw-semibold">
                   {!valSearch ||
@@ -157,15 +158,18 @@ const Home = () => {
                   )}
                 </div>
               ) : (
-                hasil.map((item) => (
+                hasil.map((item, index) => (
                   <div
                     className="card shadow bg-bro bg-dark"
                     style={{ width: "16rem" }}
-                    key={item.imdbID}
+                    key={index}
                   >
                     <a className="gambar" onClick={() => detailOnClick(item)}>
-                      <img
+                      <Image
                         src={item.Poster}
+                        width={1000}
+                        height={1000}
+                        quality={100}
                         className="card-img-top"
                         style={{
                           cursor: "pointer",
@@ -173,6 +177,11 @@ const Home = () => {
                         }}
                         alt="Image.png"
                       />
+                      {/* <img
+                        src={item.Poster}
+                        className="card-img-top"
+                        alt="image.png"
+                      /> */}
                     </a>
                     <div className="card-body bg-bro2 bg-opacity-75 text-center">
                       <h5 className="card-title text-white text-center">
@@ -203,14 +212,24 @@ const Home = () => {
                             </span>
                           </Modal.Title>
                         </Modal.Header>
-                        <Modal.Body className="bg-dark">
+                        <Modal.Body className="bg-dark position-relative">
                           <div className="d-flex flex-wrap mt-sm-5 flex-md-row bg-dark">
-                            <img
+                            {/* <img
                               src={detailCard.image}
                               width="200px"
                               height="300px"
                               alt="gmbar"
                               className=""
+                            /> */}
+                            <Image
+                              src={detailCard.image}
+                              width={500}
+                              height={500}
+                              // layout="responsive"
+                              alt="image.png"
+                              quality={30}
+                              className="po/sition-absolute"
+                              style={{ height: "23rem", width: "16rem" }}
                             />
                             <div className="ms-0 border border-end-0 border-top-0 border-bottom-0 border-4 border-danger ps-2 mt-md-0 mt-3 ms-md-2 text-white">
                               <p className="">

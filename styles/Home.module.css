@@ -1,6 +1,7 @@
 .container {
   padding: 0 2rem;
-  background-color: #333;
+  /* background-color: #333; */
+  background-color: rgb(25, 29, 43);
 }
 
 .main {
