@@ -40,7 +40,7 @@ const Home = () => {
   // Fetch data using SWR
   const fetcher = (url) => fetch(url).then((r) => r.json());
   const { data, error } = useSWR(
-    `http://www.omdbapi.com/?apikey=47e16fc6&s=${valSearch}`,
+    `https://www.omdbapi.com/?apikey=47e16fc6&s=${valSearch}`,
     fetcher
   );
 
