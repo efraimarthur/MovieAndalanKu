@@ -166,7 +166,9 @@ const Home = () => {
                   >
                     <a className="gambar" onClick={() => detailOnClick(item)}>
                       <Image
-                        src={item.Poster}
+                        src={
+                          !item.Poster.includes("http") ? "/1.jpg" : item.Poster
+                        }
                         width={1000}
                         height={1000}
                         quality={100}
